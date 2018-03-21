@@ -6,7 +6,7 @@ printf "\nStep #3: wait for server boot\n"
 sleep 3
 printf "\nStep #4: try getting an id\n"
 conversation_id=$(curl -s http://localhost:8181| awk '{gsub(/"/, "", $2); gsub(/}/, "", $2); print $2}')
-printf "\nStep #5:try posting\n"
+printf "\nStep #5: try posting\n"
 curl -X POST -d "{\"sender\": \"anson\",\"conversation_id\": \"$conversation_id\",\"message\": \"I am a teapot\"}" \
 http://localhost:8181/messages/ && echo
 curl -X POST -d "{\"sender\": \"megan\",\"conversation_id\": \"$conversation_id\",\"message\": \"I am a cup\"}" \
